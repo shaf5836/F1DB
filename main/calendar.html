@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>F1HUB - Calendar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/calendar.css">
+</head>
+
+<body>
+  <!-- navigation bar creation [Shafkat] -->
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a href="/" class="nav-logo">
+        <span class="logo-f1">F1</span>HUB
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/">Home</a></li>
+        <li><a href="/standings">Standings</a></li>
+        <li><a href="/calendar">Calendar</a></li>
+      </ul>
+      <button class="menu" id="menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="calendar-page">
+
+    <div class="container">
+      <div class="page-hero">
+
+        <h1>Race <span class="accent"> Calendar</span></h1>
+        <!-- responsively updating the year with the change of year selections -->
+        <p>Showing Races For The Year <span id="heroYear"></span></p>
+
+      </div>
+      <!-- Options for Selecting calendar years using a dropDown menu -->
+      <div class="calendar-controls">
+
+        <select id="yearSelect" class="year-select"></select>
+        <button class="filter-btn active" data-filter="all">All Races</button>
+        <button class="filter-btn" data-filter="upcoming">Upcoming</button>
+        <button class="filter-btn" data-filter="past">Completed</button>
+
+      </div>
+
+      <!-- Creates the base for website boxes and rest of the textcontent and css added on calendar.js -->
+      <div class="race-grid" id="raceGrid" style="display: none;"></div>
+      <!-- By default race-grid has been set to display - none using css and when connected to f1_db
+      and calender gets data then race-grid is converted to grid [shafkat]-->
+      <!-- Showing msg if race date not inserted or not created [shafkat] -->
+      <div id="calendarEmpty" class="state-empty" style="display:none;">
+        <p>Oops Shafkat failed to insert more data in the database. Sorry for the inconvinience.</p>
+      </div>
+      <!-- Handling errors in this div, shows a red error message and display is [shafkat]  -->
+      <div id="calendarError" class="state-error" style="display:none;"></div>
+    </div>
+  </main>
+
+  <!-- Footer for the calender part, Calender link changed to link the index[Shafkat] -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="footer-copy">Made by shafkat, rajesh and Nubayet.</span>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/standings">Standings</a>
+      </div>
+    </div>
+  </footer>
+  <div id="alert"></div>
+  <script type="module" src="/js/main.js"></script>
+  <script type="module" src="/js/calendar.js"></script>
+</body>
+
+</html>
