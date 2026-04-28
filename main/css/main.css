@@ -1,0 +1,602 @@
+/* Setting the theme for website using the following css global variables  [shafkat] */
+:root {
+  --red: #e10600;
+  --red-dark: #b30500;
+  --red-glow: rgba(225, 6, 0, 0.25);
+  --bg: #0f0f0f;
+  --bg-card: #161616;
+  --bg-card-2: #1e1e1e;
+  --bg-hover: #242424;
+  --border: #2a2a2a;
+  --border-lit: #3a3a3a;
+  --text: #f0f0f0;
+  --text-light: #888;
+  --text-dim: #555;
+  --gold: #ffd700;
+  --silver: #c0c0c0;
+  --bronze: #cd7f32;
+  --green: #00d2be;
+  --font: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --radius: 8px;
+  --radius-lg: 14px;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+  --transition: 0.2s ease;
+}
+
+/* Resetting the defaults of the css to avoid any extra margin and padding [shafkat]*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/* setting body style for the website */
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* removing link decoration and making links inherit the parent theme [shafkat] */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* converting image to block based and making sure image always covers the entire container withh 100% widthh [shafkat]*/
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* setting button style */
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-lit);
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--red);
+}
+
+/* setting all header font boldness to same level [shafkat]*/
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+
+/* setting up text scaling using clamp and making sure texts scales well [shafkat]*/
+h1 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+}
+
+h2 {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+h3 {
+  font-size: 1.15rem;
+}
+
+h4 {
+  font-size: 1rem;
+}
+
+
+
+
+p {
+  color: var(--text-light);
+}
+.accent {
+  color: var(--red);
+}
+.muted {
+  color: var(--text-light);
+}
+.gold {
+  color: var(--gold);
+}
+.silver {
+  color: var(--silver);
+}
+.bronze {
+  color: var(--bronze);
+}
+
+/* Positioning  sections with flex box [shafkat]*/
+.container { 
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  gap: 16px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.section-title::before {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 24px;
+  background: var(--red);
+  border-radius: 99px;
+}
+
+/* Setting up navigation bar and setting it to sticky position to make it available while scrolling [shafkat]*/
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(15, 15, 15, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.3rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+}
+.nav-logo .logo-f1 {
+  background: var(--red);
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 1.1rem;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.nav-links a {
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-light);
+  transition: color var(--transition), background var(--transition);
+}
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--text);
+  background: var(--bg-card-2);
+}
+.nav-links a.active {
+  color: var(--red);
+}
+
+.menu {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  border-radius: var(--radius);
+}
+
+.menu span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 99px;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+/* Stylizing the hero content of page  [shafkat]*/
+.page-hero {
+  padding: 48px 0 32px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 48px;
+}
+.page-hero h1 {
+  letter-spacing: -0.03em;
+}
+.page-hero p {
+  margin-top: 8px;
+  font-size: 1rem;
+}
+
+/* Styling the cards of the page to link to various features [shafkat]*/
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.card-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card-body {
+  padding: 24px;
+}
+
+/* Work in Progess currently[shafkat]*/
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 99px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.badge-red {
+  background: rgba(225, 6, 0, 0.18);
+  color: var(--red);
+  border: 1px solid rgba(225, 6, 0, 0.3);
+}
+
+.badge-green {
+  background: rgba(0, 210, 190, 0.12);
+  color: var(--green);
+  border: 1px solid rgba(0, 210, 190, 0.25);
+}
+
+.badge-gold {
+  background: rgba(255, 215, 0, 0.12);
+  color: var(--gold);
+  border: 1px solid rgba(255, 215, 0, 0.25);
+}
+
+.badge-muted {
+  background: var(--bg-card-2);
+  color: var(--text-light);
+  border: 1px solid var(--border);
+}
+
+/* table stylization according to theme [shafkat] */
+.table-wrap {
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+thead {
+  background: var(--bg-card-2);
+}
+
+thead th {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background var(--transition);
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background: var(--bg-hover);
+}
+
+tbody td {
+  padding: 14px 16px;
+  vertical-align: middle;
+}
+
+/* primary,ghost,active and hover button style*/
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all var(--transition);
+}
+
+.btn-primary {
+  background: var(--red);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--red-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px var(--red-glow);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-light);
+  border: 1px solid var(--border);
+}
+
+.btn-ghost:hover {
+  border-color: var(--border-lit);
+  color: var(--text);
+  background: var(--bg-card-2);
+}
+
+/* active tab button styles [shafkat]*/
+.tab-group {
+  display: flex;
+  gap: 4px;
+  background: var(--bg-card-2);
+  padding: 4px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.tab-btn {
+  padding: 7px 16px;
+  border-radius: calc(var(--radius) - 2px);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-light);
+  transition: all var(--transition);
+}
+
+.tab-btn.active {
+  background: var(--red);
+  color: #fff;
+  box-shadow: 0 2px 8px var(--red-glow);
+}
+
+.tab-btn:not(.active):hover {
+  color: var(--text);
+  background: var(--bg-hover);
+}
+
+/* team color showcase */
+.team-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* team flags*/
+.flag {
+  font-size: 1.1rem;
+}
+
+/* error handling using css work in progress [shafkat] */
+.state-empty {
+  text-align: center;
+  padding: 64px 32px;
+  color: var(--text-dim);
+}
+
+.state-empty svg {
+  margin: 0 auto 16px;
+  opacity: 0.3;
+}
+
+.state-empty p {
+  font-size: 0.9rem;
+  margin-top: 6px;
+}
+
+.state-error {
+  text-align: center;
+  padding: 32px;
+  color: var(--red);
+  font-size: 0.9rem;
+}
+
+/* Alert style for popups or msg [shafkat]*/
+#alert {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 12px 20px;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  box-shadow: var(--shadow);
+  transform: translateY(80px);
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  max-width: 320px;
+}
+
+#alert.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Global footer design [shafkat]*/
+.footer {
+  margin-top: 80px;
+  border-top: 1px solid var(--border);
+  padding: 32px 0;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-copy {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-links a {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  transition: color var(--transition);
+}
+
+.footer-links a:hover {
+  color: var(--red);
+}
+
+/*Handling responsive ui [shafkat] */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 8px;
+    gap: 2px;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 12px 16px;
+  }
+
+  .menu {
+    display: flex;
+  }
+
+  .navbar {
+    position: relative;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  thead th:nth-child(n+5) {
+    display: none;
+  }
+
+  tbody td:nth-child(n+5) {
+    display: none;
+  }
+}
+
+/* Dropdown menu styles for navbar standings [Rajesh]*/
+.nav-dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  min-width: 180px;
+  z-index: 200;
+  box-shadow: var(--shadow);
+}
+
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 10px 18px;
+  color: var(--text-light);
+  font-size: 0.95em;
+  border-radius: var(--radius);
+  transition: background var(--transition), color var(--transition);
+}
+
+.dropdown-menu li a:hover {
+  background: var(--bg-hover);
+  color: var(--red);
+}
+/* Dropdown menu styles for navbar standings closed [Rajesh]*/
