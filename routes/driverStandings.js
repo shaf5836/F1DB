@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import pool from '../config/db.js';
+import db from '../config/db.js';
 
 const router = Router();
 
 router.get('/', async (req, res) => {
   try {
-    const [rows] = await pool.query(
+    const [rows] = await db.query(
       `select d.position_current, 
       d.full_name, 
       d.name_acronym, 
