@@ -562,3 +562,41 @@ tbody td {
     display: none;
   }
 }
+
+/* Dropdown menu styles for navbar standings [Rajesh]*/
+.nav-dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  min-width: 180px;
+  z-index: 200;
+  box-shadow: var(--shadow);
+}
+
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 10px 18px;
+  color: var(--text-light);
+  font-size: 0.95em;
+  border-radius: var(--radius);
+  transition: background var(--transition), color var(--transition);
+}
+
+.dropdown-menu li a:hover {
+  background: var(--bg-hover);
+  color: var(--red);
+}
+/* Dropdown menu styles for navbar standings closed [Rajesh]*/

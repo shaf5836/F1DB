@@ -18,7 +18,15 @@
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="/">Home</a></li>
-        <li><a href="#">Standings</a></li>
+        <!-- Standings Dropdown [Rajesh]-->
+        <li class="nav-dropdown">
+          <a href="#">Standings</a>
+          <ul class="dropdown-menu">
+            <li><a href="driverStandings.html">Driver Championship</a></li>
+            <li><a href="teamStandings.html">Team Championship</a></li>
+          </ul>
+        </li>
+        <!-- Standings Dropdown Closed [Rajesh]-->
         <li><a href="/calendar">Calendar</a></li>
       </ul>
       <button class="menu" id="menu">
@@ -69,6 +77,58 @@
         </div>
       </a>
     </div>
+
+    <!-- Race Summary Feature on Homepage [shafkat]-->
+     <section class ="results-section" id="latestRaceSection">
+        <div class="section-header">
+          <h2 class="section-title">Latest Race Summary</h2>
+
+        </div>
+        <!-- skeleton for js html insertion [shafkat]-->
+        <div id="loadingState">
+          <div class="skeleton" style="height:90px;margin-bottom:16px;"></div>
+          <div class="skeleton" style="height:240px;"></div>
+        </div>
+
+        <!-- This section will be added with js -->
+        <div id="raceContent" style="display:none;">
+
+          <!-- Race header -->
+          <div class="race-info-card" id="raceInfoCard"></div>
+
+          <!-- only top three driver showcase -->
+          <section class="podium-section">
+            <h3 class="section-title" style="font-size:1rem;margin-bottom:16px;">Podium</h3>
+            <div class="podium-container" id="podiumContainer"></div>
+          </section>
+
+          <!-- Full result of last race showcase -->
+          <div class="section-header" style="margin-top:32px;">
+            <h3 class="section-title" style="font-size:1rem;">Full Race Result</h3>
+            <span id="fastestLapInfo" class="fastest-lap-badge" style="display:none;">
+            <span id="fastestLapText"></span>
+            </span>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Driver</th>
+                  <th>Team</th>
+                  <th>Laps</th>
+                  <th>Gap</th>
+                  <th>PointS</th>
+                </tr>
+              </thead>
+              <tbody id="resultsBody"></tbody>
+            </table>
+          </div>
+
+        </div>
+     </section>
+
   </main>
 
   <!-- Creating Website footer[shafkat] -->

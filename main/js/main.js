@@ -31,7 +31,7 @@ export function countryFlag(code) { // Here I am getting the country code from m
         QAT: 'QA', BHR: 'BH', AZE: 'AZ', HUN: 'HU',
     };
 
-    const a2 = code.slice(0, 2).toUpperCase();
+    const a2 = (map[code.toUpperCase()] || code.slice(0, 2)).toUpperCase();
     return a2
         .split('')
         .map(c => String.fromCodePoint(0x1F1E6 + c.charCodeAt(0) - 65))
