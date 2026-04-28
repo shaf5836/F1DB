@@ -1,0 +1,104 @@
+/* styling hero content [shafkat] */
+.hero {
+  position: relative;
+  padding: 80px 0 64px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 56px;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 80% 50%, rgba(225,6,0,0.07) 0%, transparent 60%),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 79px,
+      rgba(255,255,255,0.015) 80px
+    );
+  pointer-events: none;
+}
+.hero-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 16px;
+}
+.hero-content {
+  position: relative;
+  max-width: 640px;
+}
+
+.hero-label::before {
+  content: '';
+  width: 16px;
+  height: 2px;
+  background: var(--red);
+  border-radius: 99px;
+}
+.hero h1 { letter-spacing: -0.04em; }
+.hero-desc {
+  margin-top: 16px;
+  font-size: 1.05rem;
+  max-width: 480px;
+}
+.hero h1 span { color: var(--red); }
+.hero-cta {
+  display: flex;
+  gap: 12px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+/* Styling quick links for features [shafkat]*/
+.quick-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+  margin-bottom: 56px;
+}
+.quick-link-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: all var(--transition);
+  cursor: pointer;
+}
+.quick-link-card:hover {
+  border-color: var(--red);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px var(--red-glow);
+}
+.ql-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius);
+  background: rgba(225,6,0,0.12);
+  color: var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+.ql-text h4 { font-size: 0.9rem; font-weight: 700; }
+.ql-text p  { font-size: 0.75rem; margin-top: 2px; }
+
+/* making data responsive for mobile phones [shafkat] */
+@media (max-width: 640px) {
+  .hero { padding: 48px 0 40px; }
+  .podium-container { grid-template-columns: 1fr; max-width: 280px; margin: 0 auto; }
+  .podium-step.p1 { order: -1; }
+  .race-info-card { flex-direction: column; align-items: flex-start; }
+  .quick-links { grid-template-columns: 1fr 1fr; }
+}
