@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1HUB - Driver Radios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/radio.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container navbar-inner">
+            <a href="/" class="nav-logo">
+                <span class="logo-f1">F1</span>HUB
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/">Home</a></li>
+                <li class="nav-dropdown">
+                    <a href="#">Standings</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/driver_standings.html">Driver Championship</a></li>
+                        <li><a href="/team_standings.html">Team Championship</a></li>
+                    </ul>
+                </li>
+                <li><a href="/calendar">Calendar</a></li>
+                <li><a href="/radio" class="active">Radio</a></li>
+            </ul>
+            <button class="menu" id="menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="radio-page">
+        <div class="container">
+
+            <div class="page-hero">
+                <h1>Driver <span class="accent">Radios</span></h1>
+                <p>Listen to team radio recordings from every driver on the grid</p>
+            </div>
+
+            <div class="radio-controls">
+                <div class="radio-search-wrap">
+                    <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                    </svg>
+                    <input
+                        type="text"
+                        id="radioSearch"
+                        class="radio-search"
+                        placeholder="Search driver or team…"
+                        autocomplete="off"
+                    />
+                </div>
+                <span class="badge badge-red" id="clipCount" style="display:none;"></span>
+                <span class="keyboard-hint" id="keyboardHint">
+                    <kbd>Space</kbd> play / pause
+                </span>
+            </div>
+
+            <div class="driver-grid" id="driverGrid" style="display:none;"></div>
+
+            <div id="radioEmpty" class="state-empty" style="display:none;">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <p>No radio recordings found.</p>
+            </div>
+
+            <div id="radioError" class="state-error" style="display:none;"></div>
+
+        </div>
+    </main>
+
+    <!-- Sticky player bar -->
+    <div class="player-bar" id="playerBar">
+        <!-- Progress bar sits at the very top of the bar -->
+        <div class="player-progress-track" id="progressTrack">
+            <div class="player-progress-fill" id="progressFill"></div>
+        </div>
+
+        <div class="player-bar-inner">
+            <div class="player-bar-left">
+                <div class="player-radio-dot" id="radioDot"></div>
+                <div class="player-info">
+                    <div class="player-label">Now Playing</div>
+                    <div class="player-now-playing" id="nowPlaying">—</div>
+                </div>
+            </div>
+
+            <div class="player-bar-center">
+                <button class="play-pause-btn" id="playPauseBtn" aria-label="Play / Pause">
+                    <svg id="playPauseIcon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <polygon points="5,3 19,12 5,21"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="player-bar-right">
+                <span class="player-time" id="playerTime">0:00</span>
+                <span class="player-time-sep">/</span>
+                <span class="player-time player-duration" id="playerDuration">—</span>
+            </div>
+        </div>
+
+        <audio id="audioPlayer"></audio>
+    </div>
+
+    <div id="alert"></div>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <span class="footer-copy">Made by Shafkat, Rajesh and Nubayet.</span>
+            <div class="footer-links">
+                <a href="/">Home</a>
+                <a href="/standings">Standings</a>
+                <a href="/calendar">Calendar</a>
+                <a href="/radio">Radio</a>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="/js/main.js"></script>
+    <script type="module" src="/js/radioFeature.js"></script>
+
+</body>
+
+</html>

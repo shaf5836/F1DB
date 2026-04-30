@@ -4,9 +4,11 @@ import cors from 'cors';
 import {dirname , join} from 'path';
 import { fileURLToPath } from 'url';
 
+
 import calendarRouter from './routes/calendar.js';
 import driverStandingsRouter from './routes/driverStandings.js';
 import teamStandingsRouter from './routes/teamStandings.js'
+import radioRoutes from './routes/radioRoutes.js';
 
 dotenv.config();
 
@@ -25,6 +27,7 @@ app.use(express.static(join(__dirname, 'main')));
 app.use('/api/calendar', calendarRouter);
 app.use('/api/driverStandings', driverStandingsRouter);
 app.use('/api/teamStandings', teamStandingsRouter);
+app.use('/api/radios', radioRoutes);
 
 // Fallaback
 app.get('/calendar', (_req, res) =>
@@ -39,6 +42,9 @@ app.get('/teamStandings', (_req, res) =>
 app.get('/', (_req, res) =>
   res.sendFile(join(__dirname, 'main', 'index.html'))
 );
+app.get('/radio', (req, res) => {
+    res.sendFile('radio.html', { root: 'main' });
+});
 
 // 404 Error handling
 app.use((_req, res) =>
