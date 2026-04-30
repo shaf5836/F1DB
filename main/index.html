@@ -5,6 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>F1 Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/home.css">
 </head>
@@ -28,6 +32,7 @@
         </li>
         <!-- Standings Dropdown Closed [Rajesh]-->
         <li><a href="/calendar">Calendar</a></li>
+        <li><a href="/results">Results</a></li>
       </ul>
       <button class="menu" id="menu">
         <span></span><span></span><span></span>
@@ -44,16 +49,22 @@
           <div class="hero-label">The home of Formula 1 data</div>
           <h1>Every race<br><span>Every driver</span><br>All the data</h1>
           <p class="hero-desc">Get updated on live standings,track the race calendar,
-            analyze F1 results and compete with friends and people around the world in a big single Fantasy league in F1HUB.
+            analyze F1 results and compete with friends and people around the world in a big single Fantasy league in
+            F1HUB.
           </p>
         </div>
         <div class="hero-cta">
           <a href="/standings" class="btn btn-primary">
-            <svg <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+            <svg <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M18 20V10M12 20V4M6 20v-6" />
+            </svg>
             Standings
           </a>
           <a href="/calendar" class="btn bt-ghost">
-            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <rect x="3" y="4" width="18" height="18" rx="2" />
+              <path d="M16 2v4M8 2v4M3 10h18" />
+            </svg>
             Race Calendar
           </a>
         </div>
@@ -79,60 +90,50 @@
     </div>
 
     <!-- Race Summary Feature on Homepage [shafkat]-->
-     <section class ="results-section" id="latestRaceSection">
-        <div class="section-header">
-          <h2 class="section-title">Latest Race Summary</h2>
+    <section class="results-section" id="latestRaceSection">
+      <div class="section-header">
+        <h2 class="section-title">Latest Race Summary</h2>
+        <span class="badge badge-red" id="raceBadge" style="display:none;">LATEST</span>
+      </div>
 
+      <!-- This section will be filled by JS DOM [Shafkat] -->
+      <div id="raceContent" style="display:none;">
+
+        <div class="race-info-card" id="raceInfoCard"></div>
+
+        <!-- Podium Positions will be displayed using the podium-section [shafkat] -->
+        <section class="podium-section">
+          <h3 class="section-title" style="font-size:1rem;margin-bottom:16px;">Podium</h3>
+          <div class="podium-container" id="podiumContainer"></div>
+        </section>
+
+        <!-- Full results of the last race -->
+        <div class="section-header" style="margin-top:32px;">
+          <h3 class="section-title" style="font-size:1rem;">Full Race Result</h3>
+          </span>
         </div>
-        <!-- skeleton for js html insertion [shafkat]-->
-        <div id="loadingState">
-          <div class="skeleton" style="height:90px;margin-bottom:16px;"></div>
-          <div class="skeleton" style="height:240px;"></div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Driver</th>
+                <th>Team</th>
+                <th>Laps</th>
+                <th>Gap</th>
+                <th>PTS</th>
+              </tr>
+            </thead>
+            <tbody id="resultsBody"></tbody>
+          </table>
         </div>
 
-        <!-- This section will be added with js -->
-        <div id="raceContent" style="display:none;">
-
-          <!-- Race header -->
-          <div class="race-info-card" id="raceInfoCard"></div>
-
-          <!-- only top three driver showcase -->
-          <section class="podium-section">
-            <h3 class="section-title" style="font-size:1rem;margin-bottom:16px;">Podium</h3>
-            <div class="podium-container" id="podiumContainer"></div>
-          </section>
-
-          <!-- Full result of last race showcase -->
-          <div class="section-header" style="margin-top:32px;">
-            <h3 class="section-title" style="font-size:1rem;">Full Race Result</h3>
-            <span id="fastestLapInfo" class="fastest-lap-badge" style="display:none;">
-            <span id="fastestLapText"></span>
-            </span>
-          </div>
-
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Driver</th>
-                  <th>Team</th>
-                  <th>Laps</th>
-                  <th>Gap</th>
-                  <th>PointS</th>
-                </tr>
-              </thead>
-              <tbody id="resultsBody"></tbody>
-            </table>
-          </div>
-
-        </div>
-     </section>
-
+      </div>
   </main>
 
   <!-- Creating Website footer[shafkat] -->
-   <footer class="footer">
+  <footer class="footer">
     <div class="container footer-inner">
       <span class="footer-copy">Made By shafkat, rajesh and Nubayet.</span>
       <div class="footer-links">
@@ -140,8 +141,8 @@
         <a href="/calendar">Calendar</a>
       </div>
     </div>
+  </footer>
 
-   </footer>
+  <script type="module" src="/js/home.js"></script>
 </body>
-
 </html>
