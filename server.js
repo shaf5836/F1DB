@@ -11,7 +11,6 @@ import teamStandingsRouter from './routes/teamStandings.js';
 import resultsRouter from './routes/results.js';
 import meetingsRouter from './routes/meetings.js';
 import latestRaceRouter from './routes/latestRace.js';
-import teamStandingsRouter from './routes/teamStandings.js'
 import radioRoutes from './routes/radioRoutes.js';
 
 dotenv.config();
