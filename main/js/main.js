@@ -74,6 +74,13 @@ export function populateYearSelect(selectElem, currentYear, minYear = 2024) {
     selectElem.value = currentYear;
 }
 
+// this function formats the gap to the 1st position and if the driver himself is first then he is labelled as leader [shafkat]
+export function formatGap(gap) {
+    if (gap === null || gap === undefined) return '—';
+    if (gap === 0) return 'Leader';
+    return `+${Number(gap).toFixed(3)}s`;
+}
+
 export async function apiFetch(url) { // fetch function creation[shafkat]
     const res = await fetch(url); // making sure url response is being recieved 
     const resJson = await res.json();  // changing response to JSON

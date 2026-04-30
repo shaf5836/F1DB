@@ -94,11 +94,308 @@
 .ql-text h4 { font-size: 0.9rem; font-weight: 700; }
 .ql-text p  { font-size: 0.75rem; margin-top: 2px; }
 
+/* Latest race css [shafkat] */
+.results-section {
+  margin-bottom: 80px;
+}
+
+/* Handling stylization for race info/top 3 card section[shafkat] */
+.race-info-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  margin-bottom: 32px;
+}
+
+.race-info-left h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.race-info-left p {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  margin-top: 4px;
+}
+
+/* All the stat boxes [shafkat] */
+.race-meta {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.race-meta-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  background: var(--bg-card-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 20px;
+  min-width: 72px;
+}
+
+.race-meta-value {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.race-meta-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+/* Podium section css , here I lift the middle position a little bit to make the first position highlighted [shafkat]*/
+.podium-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  margin-bottom: 32px;
+}
+
+.podium-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  align-items: end;  
+}
+
+/* Base podium card */
+.podium-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-card-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px 16px;
+  text-align: center;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Coloured topedge accent line per  positions [shafkat] */
+.podium-step::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.podium-step.p1 {
+  padding-top: 28px;   /* tallest card */
+  border-color: rgba(255, 215, 0, 0.3);
+  box-shadow: 0 0 24px rgba(255, 215, 0, 0.07);
+}
+.podium-step.p1::before { background: var(--gold); }
+.podium-step.p1:hover   { box-shadow: 0 0 32px rgba(255, 215, 0, 0.14); }
+
+.podium-step.p2 {
+  border-color: rgba(192, 192, 192, 0.25);
+}
+.podium-step.p2::before { background: var(--silver); }
+
+.podium-step.p3 {
+  border-color: rgba(205, 127, 50, 0.25);
+}
+.podium-step.p3::before { background: var(--bronze); }
+
+/* Medal emoji */
+.podium-pos {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+/* Driver three-letter acronym */
+.podium-name {
+  font-size: 1.35rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+/* Team name — colour is set inline via JS */
+.podium-team {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* Points pill at the bottom of each podium card */
+.podium-pts {
+  margin-top: 4px;
+  font-size: 0.8rem;
+  color: var(--text-light);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  padding: 3px 12px;
+}
+
+.podium-pts span {
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* full results table[shafkat] */
+.pos-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-light);
+  background: var(--bg-card-2);
+}
+
+/* Top-3 position cards [shafkat] */
+.pos-num.pos-1 {
+  background: rgba(255, 215, 0, 0.15);
+  color: var(--gold);
+  border: 1px solid rgba(255, 215, 0, 0.35);
+}
+.pos-num.pos-2 {
+  background: rgba(192, 192, 192, 0.12);
+  color: var(--silver);
+  border: 1px solid rgba(192, 192, 192, 0.3);
+}
+.pos-num.pos-3 {
+  background: rgba(205, 127, 50, 0.12);
+  color: var(--bronze);
+  border: 1px solid rgba(205, 127, 50, 0.3);
+}
+
+/* these css allows driver accronym and name to be stacked together [shafkat]*/
+.driver-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.driver-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.driver-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.driver-acronym {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text-light);
+  text-transform: uppercase;
+}
+
+/* showing team color dot [shafkat] */
+.team-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-light);
+  white-space: nowrap;
+}
+
+/* points in the last column[shafkat] */
+.pts-cell {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  padding: 3px 8px;
+  border-radius: 99px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  background: var(--bg-card-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+/* changing the opacity to make dnf a little bit muted on screen and not look distracting [shafkat] */
+.dnf-row {
+  opacity: 0.5;
+}
+
+.dnf-row:hover {
+  opacity: 0.75;
+}
+
+/* adding dnf dsq, dns badge visuals*/
+.dnf-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(225, 6, 0, 0.12);
+  color: var(--red);
+  border: 1px solid rgba(225, 6, 0, 0.25);
+}
+
 /* making data responsive for mobile phones [shafkat] */
 @media (max-width: 640px) {
   .hero { padding: 48px 0 40px; }
-  .podium-container { grid-template-columns: 1fr; max-width: 280px; margin: 0 auto; }
+
+  .race-info-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .race-meta {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .race-meta-item {
+    flex: 1;
+    padding: 8px 10px;
+    min-width: unset;
+  }
+
+  .race-meta-value {
+    font-size: 1.1rem;
+  }
+
+  .podium-container {
+    grid-template-columns: 1fr;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
   .podium-step.p1 { order: -1; }
-  .race-info-card { flex-direction: column; align-items: flex-start; }
+
   .quick-links { grid-template-columns: 1fr 1fr; }
 }

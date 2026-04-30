@@ -38,6 +38,7 @@ body {
   color: var(--text);
   min-height: 100vh;
   line-height: 1.6;
+  padding: 10px;
 }
 
 /* removing link decoration and making links inherit the parent theme [shafkat] */
