@@ -7,6 +7,8 @@ import { fileURLToPath } from 'url';
 import calendarRouter from './routes/calendar.js';
 import driverStandingsRouter from './routes/driverStandings.js';
 import teamStandingsRouter from './routes/teamStandings.js'
+import news from './routes/news.js'
+import otpRouter from './routes/otp.js'
 
 dotenv.config();
 
@@ -25,6 +27,8 @@ app.use(express.static(join(__dirname, 'main')));
 app.use('/api/calendar', calendarRouter);
 app.use('/api/driverStandings', driverStandingsRouter);
 app.use('/api/teamStandings', teamStandingsRouter);
+app.use('/api/news', news);
+app.use('/api/otp', otpRouter);
 
 // Fallaback
 app.get('/calendar', (_req, res) =>
