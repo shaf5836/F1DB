@@ -9,6 +9,7 @@ import driverStandingsRouter from './routes/driverStandings.js';
 import teamStandingsRouter from './routes/teamStandings.js'
 import news from './routes/news.js'
 import otpRouter from './routes/otp.js'
+import adminRouter from './routes/admin.js';
 
 dotenv.config();
 
@@ -29,6 +30,7 @@ app.use('/api/driverStandings', driverStandingsRouter);
 app.use('/api/teamStandings', teamStandingsRouter);
 app.use('/api/news', news);
 app.use('/api/otp', otpRouter);
+app.use('/api/admin', adminRouter); 
 
 // Fallaback
 app.get('/calendar', (_req, res) =>

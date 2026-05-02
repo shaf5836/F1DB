@@ -75,3 +75,49 @@
         height: 180px;
     }
 }
+
+/* Container to align H1 and Button side-by-side */
+.hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+/* Subscribe Button Styling */
+.btn-subscribe {
+    background-color: #e10600; /* F1 Signature Red */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border-bottom: 3px solid #b00500; /* Darker red for depth */
+}
+
+.btn-subscribe:hover {
+    background-color: #ff1e17;
+    transform: translateY(-2px);
+}
+
+.btn-subscribe:active {
+    transform: translateY(1px);
+    border-bottom: 1px solid #b00500;
+}
+
+/* Responsive adjustment for small screens */
+@media (max-width: 700px) {
+    .hero-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .btn-subscribe {
+        width: 100%;
+    }
+}

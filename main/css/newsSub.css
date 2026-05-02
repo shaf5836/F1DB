@@ -1,0 +1,67 @@
+/* newsSub.css - Subscription page styles [Rajesh] */
+
+/* Input and button row */
+.form-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.form-group input {
+    flex: 1;
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    font-family: var(--font);
+    background: var(--bg-card-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    transition: border-color var(--transition);
+    outline: none;
+}
+
+.form-group input::placeholder {
+    color: var(--text-dim);
+}
+
+.form-group input:focus {
+    border-color: var(--red);
+}
+
+.form-group input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Status messages */
+.sub-msg-success {
+    margin-top: 8px;
+    padding: 12px 16px;
+    border-radius: var(--radius);
+    background: rgba(0, 210, 190, 0.10);
+    color: var(--green);
+    border: 1px solid rgba(0, 210, 190, 0.25);
+    font-size: 0.9rem;
+}
+
+.sub-msg-error {
+    margin-top: 8px;
+    padding: 12px 16px;
+    border-radius: var(--radius);
+    background: rgba(225, 6, 0, 0.10);
+    color: var(--red);
+    border: 1px solid rgba(225, 6, 0, 0.25);
+    font-size: 0.9rem;
+}
+
+/* Responsive: stack input and button on small screens */
+@media (max-width: 500px) {
+    .form-group {
+        flex-direction: column;
+    }
+
+    .form-group .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
