@@ -87,6 +87,9 @@ app.get('/radio', (req, res) => {
 app.get('/gridCompare', (_req, res) =>
   res.sendFile(join(__dirname, 'main', 'gridCompare.html'))
 );
+app.get('/news', (_req, res) =>
+  res.sendFile(join(__dirname, 'main', 'news.html'))
+);
 
 // New fantasy + auth page fallback routes [Nubayet]
 app.get('/login', (_req, res) =>

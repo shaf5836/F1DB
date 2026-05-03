@@ -14,7 +14,7 @@
   --grey-mid:       #888896;
   --grey-dim:       #444455;
 
-  --driver1-color:  #00d2ff;   /* overridden dynamically by JS */
+  --driver1-color:  #00d2ff;  
   --driver2-color:  #ff6b35;
 
   --font-display:   'Orbitron', monospace;
