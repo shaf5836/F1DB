@@ -20,9 +20,10 @@ loadLatestRace();
 
 // fetching data from latestRace route[shafkat]
 async function loadLatestRace() {
-
   try {
     const response = await apiFetch('/api/latestRace');
+    document.getElementById('loadingState').style.display = 'none'; 
+
     if (!response.data) {
       showState('no-race');
       return;
@@ -167,7 +168,7 @@ function renderResults(results) {
 
 // managing different states of the html content in the race summary section [shafkat]
 function showState(state) {
-  raceContent.style.display = state === 'content' ? 'block' : 'none';
-  noRaceState.style.display = state === 'no-race' ? 'block' : 'none';
-  errorState.style.display = state === 'error' ? 'block' : 'none';
+  raceContent.style.display     = state === 'content'  ? 'block' : 'none';
+  if (noRaceState) noRaceState.style.display = state === 'no-race' ? 'block' : 'none';
+  if (errorState)  errorState.style.display  = state === 'error'   ? 'block' : 'none';
 }
