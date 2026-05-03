@@ -60,16 +60,22 @@
           <div class="hero-label">The home of Formula 1 data</div>
           <h1>Every race<br><span>Every driver</span><br>All the data</h1>
           <p class="hero-desc">Get updated on live standings, track the race calendar,
-            analyze F1 results and compete with friends and people around the world in a big single Fantasy league in F1HUB.
+            analyze F1 results and compete with friends and people around the world in a big single Fantasy league in
+            F1HUB.
           </p>
         </div>
         <div class="hero-cta">
           <a href="/driverStandings" class="btn btn-primary">
-            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M18 20V10M12 20V4M6 20v-6" />
+            </svg>
             Standings
           </a>
           <a href="/calendar" class="btn btn-ghost">
-            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <rect x="3" y="4" width="18" height="18" rx="2" />
+              <path d="M16 2v4M8 2v4M3 10h18" />
+            </svg>
             Race Calendar
           </a>
         </div>
@@ -105,7 +111,13 @@
     <section class="results-section" id="latestRaceSection">
       <div class="section-header">
         <h2 class="section-title">Latest Race Summary</h2>
+        <span id="raceBadge" class="badge badge-red" style="display:none;">Latest</span>
       </div>
+
+      <div id="noRaceState" style="display:none;">
+        <p class="state-empty">No race data available yet.</p>
+      </div>
+      <div id="errorState" class="state-error" style="display:none;"></div>
 
       <!-- skeleton for js html insertion [shafkat]-->
       <div id="loadingState">
@@ -167,4 +179,5 @@
   <script src="/js/navAuth.js"></script>
   <script type="module" src="/js/home.js"></script>
 </body>
+
 </html>
