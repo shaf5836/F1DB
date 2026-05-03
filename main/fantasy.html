@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fantasy | F1 Hub</title>
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/fantasy.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container navbar-inner">
+        <a href="/" class="nav-logo"> <span class="logo-f1">F1</span>HUB </a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="/">Home</a></li>
+          <li class="nav-dropdown">
+            <a href="#">Standings</a>
+            <ul class="dropdown-menu">
+              <li><a href="/driverStandings">Driver Championship</a></li>
+              <li><a href="/teamStandings">Team Championship</a></li>
+            </ul>
+          </li>
+          <li><a href="/calendar">Calendar</a></li>
+          <li><a href="/radio">Radio</a></li>
+          <li class="nav-dropdown">
+            <a href="#">Fantasy</a>
+            <ul class="dropdown-menu">
+              <li><a href="/fantasy" class="active">Make a Pick</a></li>
+              <li><a href="/leaderboard">Leaderboard</a></li>
+            </ul>
+          </li>
+          <li><a href="/shop">Shop</a></li>
+          <li><a href="/login" id="navLogin">Login</a></li>
+          <li><a href="/signup" id="navSignup">Sign Up</a></li>
+        </ul>
+        <button class="menu" id="menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <h1>Fantasy <span class="accent">League</span></h1>
+          <p>
+            Pick 2 drivers and 1 team for the next race. Choose a captain for 2x
+            points!
+          </p>
+        </div>
+      </section>
+
+      <!-- Auth gate — shown if not logged in -->
+      <div id="authGate" class="container" style="display: none">
+        <div class="card auth-gate-card">
+          <div class="card-body">
+            <h3>Login Required</h3>
+            <p class="gate-text">
+              You need an account to play the Fantasy League.
+            </p>
+            <div class="gate-actions">
+              <a href="/login" class="btn btn-primary">Login</a>
+              <a href="/signup" class="btn btn-ghost">Sign Up</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pick form — shown if logged in -->
+      <div id="pickFormSection" class="container" style="display: none">
+        <!-- Race info -->
+        <div class="card race-card">
+          <div class="card-header">
+            <h3 id="raceTitle">Loading next race...</h3>
+            <span class="badge badge-red" id="raceCountdown">--</span>
+          </div>
+          <div class="card-body">
+            <p id="raceDetails">--</p>
+          </div>
+        </div>
+
+        <!-- Pick form -->
+        <div class="card">
+          <div class="card-header">
+            <h3>Your Pick</h3>
+            <span class="badge badge-muted" id="pickStatus">Not submitted</span>
+          </div>
+          <div class="card-body">
+            <form id="pickForm">
+              <input
+                type="hidden"
+                id="meeting_key"
+                name="meeting_key"
+                value=""
+              />
+
+              <div class="form-row">
+                <label for="driver1_id">Driver 1</label>
+                <select id="driver1_id" class="form-select" required>
+                  <option value="">-- Select driver 1 --</option>
+                </select>
+              </div>
+
+              <div class="form-row">
+                <label for="driver2_id">Driver 2</label>
+                <select id="driver2_id" class="form-select" required>
+                  <option value="">-- Select driver 2 --</option>
+                </select>
+              </div>
+
+              <div class="form-row">
+                <label for="team_id">Team</label>
+                <select id="team_id" class="form-select" required>
+                  <option value="">-- Select a team --</option>
+                </select>
+              </div>
+
+              <!-- Captain selector — single dropdown showing the actual driver
+                   names so users know who they're picking as captain. -->
+              <div class="form-row">
+                <label for="captain_driver_id">Captain (gets 2x points)</label>
+                <select id="captain_driver_id" class="form-select" required>
+                  <option value="">-- Choose captain --</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-primary save-btn">
+                Save Pick
+              </button>
+            </form>
+
+            <div id="pickMessage" class="pick-message"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span class="footer-copy">Made By shafkat, rajesh and Nubayet.</span>
+        <div class="footer-links">
+          <a href="/driverStandings">Standings</a>
+          <a href="/calendar">Calendar</a>
+          <a href="/radio">Radio</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/js/navAuth.js"></script>
+    <script src="/js/fantasy.js"></script>
+  </body>
+</html>

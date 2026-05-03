@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop | F1 Hub</title>
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/shop.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container navbar-inner">
+        <a href="/" class="nav-logo"> <span class="logo-f1">F1</span>HUB </a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="/">Home</a></li>
+          <li class="nav-dropdown">
+            <a href="#">Standings</a>
+            <ul class="dropdown-menu">
+              <li><a href="/driverStandings">Driver Championship</a></li>
+              <li><a href="/teamStandings">Team Championship</a></li>
+            </ul>
+          </li>
+          <li><a href="/calendar">Calendar</a></li>
+          <li><a href="/radio">Radio</a></li>
+          <li class="nav-dropdown">
+            <a href="#">Fantasy</a>
+            <ul class="dropdown-menu">
+              <li><a href="/fantasy">Make a Pick</a></li>
+              <li><a href="/leaderboard">Leaderboard</a></li>
+            </ul>
+          </li>
+          <li><a href="/shop" class="active">Shop</a></li>
+
+          <li><a href="/login" id="navLogin">Login</a></li>
+          <li><a href="/signup" id="navSignup">Sign Up</a></li>
+        </ul>
+        <button class="menu" id="menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <h1>F1 <span class="accent">Shop</span></h1>
+          <p>Buy official merchandise and race tickets.</p>
+        </div>
+      </section>
+
+      <div class="container">
+        <!-- Tab group to switch between merch and tickets -->
+        <div class="section-header">
+          <div class="section-title">Browse</div>
+          <div class="tab-group" id="shopTabs">
+            <button class="tab-btn active" data-type="all">All</button>
+            <button class="tab-btn" data-type="merch">Merch</button>
+            <button class="tab-btn" data-type="ticket">Tickets</button>
+          </div>
+        </div>
+
+        <!-- Product grid is filled by shop.js -->
+        <div id="shopGrid" class="shop-grid">
+          <div class="state-empty shop-grid-empty">
+            <p>Loading items...</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Floating cart button — always visible -->
+    <button class="cart-toggle" id="cartToggle">
+      🛒 Cart (<span id="cartCount">0</span>)
+    </button>
+
+    <!-- Cart sidebar — slides in from the right when toggled -->
+    <aside class="cart-sidebar" id="cartSidebar">
+      <div class="cart-header">
+        <h3>Your Cart</h3>
+        <button class="btn btn-ghost" id="cartClose">Close</button>
+      </div>
+      <div class="cart-body" id="cartBody">
+        <p class="muted">Your cart is empty.</p>
+      </div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Total</span>
+          <span id="cartTotal">$0.00</span>
+        </div>
+        <button class="btn btn-primary checkout-btn" id="checkoutBtn">
+          Checkout
+        </button>
+      </div>
+    </aside>
+
+    <!-- Success modal — shown after a successful checkout -->
+    <div class="modal-backdrop" id="successModal">
+      <div class="modal-box">
+        <h3>🏁 Order Confirmed!</h3>
+        <p id="successMessage">--</p>
+        <button class="btn btn-primary" id="successClose">OK</button>
+      </div>
+    </div>
+
+    <!-- Alert div used by jQuery to show small toast messages -->
+    <div id="alert"></div>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span class="footer-copy">Made By shafkat, rajesh and Nubayet.</span>
+        <div class="footer-links">
+          <a href="/driverStandings">Standings</a>
+          <a href="/calendar">Calendar</a>
+          <a href="/radio">Radio</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/js/navAuth.js"></script>
+    <script type="module" src="/js/shop.js"></script>
+  </body>
+</html>

@@ -1,6 +1,5 @@
 import { apiFetch, showAlert } from './main.js';
 
-// ── DOM refs ──────────────────────────────────────────────────────────────────
 const driverGrid    = document.getElementById('driverGrid');
 const radioEmpty    = document.getElementById('radioEmpty');
 const radioError    = document.getElementById('radioError');
@@ -15,13 +14,11 @@ const playerTime    = document.getElementById('playerTime');
 const playerDuration = document.getElementById('playerDuration');
 const radioDot      = document.getElementById('radioDot');
 
-// ── State ─────────────────────────────────────────────────────────────────────
 let activeDriverId  = null;
 let activeUrl       = null;
 let allRadios       = [];
 let driverMap       = {};
 
-// Team color map — extend as needed
 const TEAM_COLORS = {
     'Red Bull Racing':      '#3671C6',
     'Ferrari':              '#E8002D',
@@ -44,10 +41,8 @@ function getTeamColor(teamName) {
     return 'var(--red)';
 }
 
-// ── Bootstrap ─────────────────────────────────────────────────────────────────
 loadRadios();
 
-// ── Search filter ─────────────────────────────────────────────────────────────
 document.getElementById('radioSearch').addEventListener('input', function () {
     filterCards(this.value.trim().toLowerCase());
 });
@@ -77,7 +72,6 @@ function filterCards(query) {
     }
 }
 
-// ── Data loading ──────────────────────────────────────────────────────────────
 function loadRadios() {
     showState('loading');
 
@@ -117,7 +111,6 @@ function buildDriverMap() {
     }
 }
 
-// ── Rendering ─────────────────────────────────────────────────────────────────
 function renderDriverCards() {
     let html = '';
     const drivers = Object.values(driverMap);
@@ -125,11 +118,11 @@ function renderDriverCards() {
     drivers.forEach((d, i) => {
         const clipWord   = d.urls.length === 1 ? 'clip' : 'clips';
         const teamColor  = getTeamColor(d.teamName);
-        const delay      = Math.min(i * 50, 400); // stagger, capped at 400ms
+        const delay      = Math.min(i * 50, 400);
 
         html += `
-        <div class="radio-card" 
-             id="card-${d.driverId}" 
+        <div class="radio-card"
+             id="card-${d.driverId}"
              data-driver-id="${d.driverId}"
              style="animation-delay: ${delay}ms; --team-color: ${teamColor};">
             <div class="radio-card-accent"></div>
@@ -148,14 +141,14 @@ function renderDriverCards() {
 
     driverGrid.innerHTML = html;
 
-    // Attach click listeners
+
     driverGrid.querySelectorAll('.clip-row').forEach(row => {
         row.addEventListener('click', () => {
             playClip(row.dataset.url, row.dataset.driverId, row.dataset.label);
         });
     });
 
-    // Pre-fetch clip durations quietly in background
+
     prefetchDurations();
 }
 
@@ -163,9 +156,9 @@ function buildClipRows(driver) {
     return driver.urls.map((url, i) => {
         const label = `Clip ${i + 1}`;
         return `
-        <div class="clip-row" 
-             data-url="${url}" 
-             data-driver-id="${driver.driverId}" 
+        <div class="clip-row"
+             data-url="${url}"
+             data-driver-id="${driver.driverId}"
              data-label="${label}">
             <span class="clip-play-icon">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
@@ -186,14 +179,13 @@ function buildClipRows(driver) {
     }).join('');
 }
 
-// Pre-load each audio URL briefly to read its duration
 function prefetchDurations() {
     const allUrls = [];
     for (const d of Object.values(driverMap)) {
         d.urls.forEach(url => allUrls.push(url));
     }
 
-    // Stagger to avoid hammering the network
+
     allUrls.forEach((url, i) => {
         setTimeout(() => {
             const tmp = new Audio();
@@ -201,16 +193,15 @@ function prefetchDurations() {
             tmp.src = url;
             tmp.addEventListener('loadedmetadata', () => {
                 const dur = formatTime(tmp.duration);
-                // Update all elements with this url
+
                 document.querySelectorAll(`.clip-duration[data-url="${CSS.escape(url)}"]`)
                     .forEach(el => { el.textContent = dur; });
-                tmp.src = ''; // free memory
+                tmp.src = '';
             });
         }, i * 120);
     });
 }
 
-// ── Playback ──────────────────────────────────────────────────────────────────
 function playClip(url, driverId, label) {
     const driver = driverMap[driverId];
     if (!driver) return;
@@ -252,19 +243,18 @@ function togglePlayPause() {
     }
 }
 
-// ── Player state helpers ──────────────────────────────────────────────────────
 function setPlayerState(state) {
     const isPlaying = state === 'playing';
 
-    // Play/pause icon swap
+
     playPauseIcon.innerHTML = isPlaying
         ? `<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>`
         : `<polygon points="5,3 19,12 5,21"/>`;
 
-    // Pulse dot
+
     radioDot.classList.toggle('paused', !isPlaying);
 
-    // Active clip row icon + waveform pause state
+
     document.querySelectorAll('.clip-row.active').forEach(r => {
         r.querySelector('.clip-play-icon svg').innerHTML = isPlaying
             ? `<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>`
@@ -284,7 +274,6 @@ function highlightActiveClip(driverId, url) {
     if (activeCard) activeCard.classList.add('active');
 }
 
-// ── Progress bar & time update ────────────────────────────────────────────────
 audioPlayer.addEventListener('timeupdate', () => {
     if (!audioPlayer.duration) return;
     const pct = (audioPlayer.currentTime / audioPlayer.duration) * 100;
@@ -296,7 +285,6 @@ audioPlayer.addEventListener('loadedmetadata', () => {
     playerDuration.textContent = formatTime(audioPlayer.duration);
 });
 
-// Click on progress bar to seek
 progressTrack.addEventListener('click', e => {
     if (!audioPlayer.duration) return;
     const rect = progressTrack.getBoundingClientRect();
@@ -304,7 +292,6 @@ progressTrack.addEventListener('click', e => {
     audioPlayer.currentTime = pct * audioPlayer.duration;
 });
 
-// ── Audio element events ──────────────────────────────────────────────────────
 audioPlayer.addEventListener('ended', () => {
     setPlayerState('paused');
     progressFill.style.width = '0%';
@@ -315,12 +302,10 @@ audioPlayer.addEventListener('ended', () => {
 audioPlayer.addEventListener('pause', () => setPlayerState('paused'));
 audioPlayer.addEventListener('play',  () => setPlayerState('playing'));
 
-// ── Play/pause button ─────────────────────────────────────────────────────────
 playPauseBtn.addEventListener('click', togglePlayPause);
 
-// ── Keyboard shortcut: Space to play/pause ────────────────────────────────────
 document.addEventListener('keydown', e => {
-    // Don't intercept Space when user is typing in the search box
+
     if (e.target === document.getElementById('radioSearch')) return;
     if (e.code === 'Space' && activeUrl) {
         e.preventDefault();
@@ -328,7 +313,6 @@ document.addEventListener('keydown', e => {
     }
 });
 
-// ── Utility ───────────────────────────────────────────────────────────────────
 function trimUrl(url) {
     const parts = url.split('/');
     return parts[parts.length - 1] || url;
