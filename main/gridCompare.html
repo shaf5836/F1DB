@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>F1HUB - Grid Compare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  
+  <link rel="stylesheet" href="/css/gridCompare.css">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+
+  <!-- navigation bar creation [Shafkat] -->
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a href="/" class="nav-logo">
+        <span class="logo-f1">F1</span>HUB
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/">Home</a></li>
+        <!-- Standings Dropdown [Rajesh]-->
+        <li class="nav-dropdown">
+          <a href="#">Standings</a>
+          <ul class="dropdown-menu">
+            <li><a href="driverStandings.html">Driver Championship</a></li>
+            <li><a href="teamStandings.html">Team Championship</a></li>
+          </ul>
+        </li>
+        <!-- Standings Dropdown Closed [Rajesh]-->
+        <li><a href="/calendar" >Calendar</a></li>
+        <li><a href="/results">Results</a></li>
+        <li><a href="/radio">Radio</a></li>
+        <li><a href="/gridCompare" class="active">Grid Compare</a></li>
+      </ul>
+      <button class="menu" id="menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="gc-main">
+    <div class="container">
+
+      <div class="page-hero">
+        <h1>Grid <span class="accent">Compare</span></h1>
+        <p>F1 Driver Head-To-Head Analysis 2024 Season</p>
+      </div>
+
+      <!-- Making category part -->
+      <div class="gc-tabs" role="tablist">
+        <button class="gc-tab active" role="tab" data-tab="overtakes">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M17 3l4 4-4 4M3 7h18M7 21l-4-4 4-4M21 17H3" />
+          </svg>
+          Overtakes
+          <span class="gc-tab__badge" id="tab-badge-overtakes">H2H</span>
+        </button>
+        <button class="gc-tab" role="tab" data-tab="points">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+          </svg>
+          Points
+          <span class="gc-tab__badge" id="tab-badge-points">NEW</span>
+        </button>
+      </div>
+
+      <!-- Creating Driver selector for two drivers[shafkat] -->
+      <div class="gc-selector-row">
+        <!-- driver1 selection -->
+        <div class="gc-selector-panel" data-slot="1">
+          <div class="gc-selector-label">Driver 1</div>
+          <select class="gc-driver-select" id="driver1-select">
+            <option value="">— Select Driver —</option>
+          </select>
+          <div class="gc-driver-card" id="driver1-card">
+            <div class="gc-driver-card__number" id="d1-number">—</div>
+            <div class="gc-driver-card__info">
+              <div class="gc-driver-card__name" id="d1-name">—</div>
+              <div class="gc-driver-card__team" id="d1-team">—</div>
+            </div>
+            <div class="gc-driver-card__flag" id="d1-flag">🏁</div>
+          </div>
+        </div>
+
+        <div class="gc-selector-vs">VS</div>
+
+        <!--Driver 2 selection -->
+        <div class="gc-selector-panel" data-slot="2">
+          <div class="gc-selector-label">Driver 2</div>
+          <select class="gc-driver-select" id="driver2-select">
+            <option value="">— Select Driver —</option>
+          </select>
+          <div class="gc-driver-card" id="driver2-card">
+            <div class="gc-driver-card__number" id="d2-number">—</div>
+            <div class="gc-driver-card__info">
+              <div class="gc-driver-card__name" id="d2-name">—</div>
+              <div class="gc-driver-card__team" id="d2-team">—</div>
+            </div>
+            <div class="gc-driver-card__flag" id="d2-flag">🏁</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Creating button for compare -->
+      <div class="gc-compare-btn-wrap">
+        <button class="gc-compare-btn" id="compare-btn" disabled>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.35-4.35" />
+          </svg>
+          Analyse
+        </button>
+      </div>
+
+      <!-- Error msg [shafkat]-->
+      <div class="gc-error" id="gc-error">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10" />
+          <line x1="12" y1="8" x2="12" y2="12" />
+          <line x1="12" y1="16" x2="12.01" y2="16" />
+        </svg>
+        <span id="gc-error-msg">An error occurred.</span>
+      </div>
+
+      <!-- loading span-->
+      <div class="gc-loading" id="gc-loading">
+        <div class="gc-spinner"></div>
+        <span>Fetching telemetry…</span>
+      </div>
+
+      <!-- showcasing overtake results here [shafkat] -->
+      <section class="gc-results" id="results-overtakes">
+        <div class="gc-section-header">
+          <div class="gc-section-header__dot"></div>
+          <div class="gc-section-header__title">Season Totals</div>
+        </div>
+        <div class="gc-stat-banner" id="ov-stat-banner">
+          <div class="gc-stat-side" id="ov-stat-left">
+            <div class="gc-stat-item">
+              <div class="gc-stat-item__label">Overtakes Made</div>
+              <div class="gc-stat-item__value" id="ov-d1-made">—</div>
+              <div class="gc-stat-item__sub" id="ov-d1-received-sub">—</div>
+            </div>
+            <div class="gc-stat-item">
+              <div class="gc-stat-item__label">Avg. Position Gained</div>
+              <div class="gc-stat-item__value" id="ov-d1-avgpos" style="font-size:22px">—</div>
+            </div>
+          </div>
+          <div class="gc-stat-divider"></div>
+          <div class="gc-stat-side gc-stat-side--right" id="ov-stat-right">
+            <div class="gc-stat-item">
+              <div class="gc-stat-item__label">Overtakes Made</div>
+              <div class="gc-stat-item__value" id="ov-d2-made">—</div>
+              <div class="gc-stat-item__sub" id="ov-d2-received-sub">—</div>
+            </div>
+            <div class="gc-stat-item">
+              <div class="gc-stat-item__label">Avg. Position Gained</div>
+              <div class="gc-stat-item__value" id="ov-d2-avgpos" style="font-size:22px">—</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gc-legend" id="ov-legend">
+          <div class="gc-legend__item">
+            <div class="gc-legend__swatch" id="ov-leg-swatch1" style="background:var(--driver1-color)"></div>
+            <span id="ov-leg-name1">Driver 1</span>
+          </div>
+          <div class="gc-legend__item">
+            <div class="gc-legend__swatch" id="ov-leg-swatch2" style="background:var(--driver2-color)"></div>
+            <span id="ov-leg-name2">Driver 2</span>
+          </div>
+        </div>
+
+        <div class="gc-section-header">
+          <div class="gc-section-header__dot"></div>
+          <div class="gc-section-header__title">Overtakes Made per Race</div>
+        </div>
+        <div class="gc-charts-grid gc-charts-grid--wide">
+          <div class="gc-chart-card">
+            <div class="gc-chart-card__title">Overtakes Made per Grand Prix</div>
+            <canvas id="chart-ov-made" height="90"></canvas>
+          </div>
+        </div>
+
+        <div class="gc-charts-grid">
+          <div class="gc-chart-card">
+            <div class="gc-chart-card__title">Overtakes Received per Grand Prix</div>
+            <canvas id="chart-ov-received" height="130"></canvas>
+          </div>
+          <div class="gc-chart-card">
+            <div class="gc-chart-card__title">Season Cumulative Overtakes</div>
+            <canvas id="chart-ov-cumul" height="130"></canvas>
+          </div>
+        </div>
+
+        <div class="gc-section-header">
+          <div class="gc-section-header__dot"></div>
+          <div class="gc-section-header__title">Head-to-Head Battles</div>
+        </div>
+        <div class="gc-h2h-table-wrap">
+          <div id="ov-h2h-empty" class="gc-h2h-empty" style="display:none">
+            No direct head-to-head overtakes recorded between these drivers.
+          </div>
+          <table class="gc-table" id="ov-h2h-table">
+            <thead>
+              <tr>
+                <th>Grand Prix</th>
+                <th>Lap</th>
+                <th>Position</th>
+                <th>Overtaking</th>
+                <th>Overtaken</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody id="ov-h2h-tbody"></tbody>
+            <!-- results of overtake here -->
+          </table>
+        </div>
+
+      </section>
+
+
+      <!-- tab for points results[shafkat] -->
+      <section class="gc-results" id="results-points">
+
+        <div class="gc-section-header">
+          <div class="gc-section-header__dot"></div>
+          <div class="gc-section-header__title">Championship Points</div>
+        </div>
+
+        <div class="gc-points-summary">
+          <div class="gc-points-card" data-slot="1">
+            <div class="gc-points-card__driver" id="pts-d1-name">Driver 1</div>
+            <div class="gc-points-card__total" id="pts-d1-total" style="color:var(--driver1-color)">—</div>
+            <div class="gc-points-card__sub" id="pts-d1-sub">— scoring sessions</div>
+            <div class="gc-points-card__delta" id="pts-d1-delta"></div>
+          </div>
+          <div class="gc-points-card" data-slot="2">
+            <div class="gc-points-card__driver" id="pts-d2-name">Driver 2</div>
+            <div class="gc-points-card__total" id="pts-d2-total" style="color:var(--driver2-color)">—</div>
+            <div class="gc-points-card__sub" id="pts-d2-sub">— scoring sessions</div>
+            <div class="gc-points-card__delta" id="pts-d2-delta"></div>
+          </div>
+        </div>
+
+        <div class="gc-legend" id="pts-legend">
+          <div class="gc-legend__item">
+            <div class="gc-legend__swatch" id="pts-leg-swatch1" style="background:var(--driver1-color)"></div>
+            <span id="pts-leg-name1">Driver 1</span>
+          </div>
+          <div class="gc-legend__item">
+            <div class="gc-legend__swatch" id="pts-leg-swatch2" style="background:var(--driver2-color)"></div>
+            <span id="pts-leg-name2">Driver 2</span>
+          </div>
+        </div>
+
+        <div class="gc-section-header">
+          <div class="gc-section-header__dot"></div>
+          <div class="gc-section-header__title">Cumulative Points Progression</div>
+        </div>
+        <div class="gc-charts-grid gc-charts-grid--wide">
+          <div class="gc-chart-card">
+            <div class="gc-chart-card__title">Points Accumulated After Each Session</div>
+            <canvas id="chart-pts-cumul" height="90"></canvas>
+          </div>
+        </div>
+
+        <div class="gc-section-header">
+          <div class="gc-section-header__dot"></div>
+          <div class="gc-section-header__title">Points Per Session</div>
+        </div>
+        <div class="gc-charts-grid">
+          <div class="gc-chart-card">
+            <div class="gc-chart-card__title">Points Scored Each Session</div>
+            <canvas id="chart-pts-perSession" height="130"></canvas>
+          </div>
+          <div class="gc-chart-card">
+            <div class="gc-chart-card__title">Points Gap (Driver 1 − Driver 2)</div>
+            <canvas id="chart-pts-gap" height="130"></canvas>
+          </div>
+        </div>
+
+        <div class="gc-section-header">
+          <div class="gc-section-header__dot"></div>
+          <div class="gc-section-header__title">Session-by-Session Breakdown</div>
+        </div>
+        <div class="gc-h2h-table-wrap">
+          <table class="gc-table" id="pts-session-table">
+            <thead>
+              <tr>
+                <th>Session</th>
+                <th>Type</th>
+                <th id="pts-th-d1">Driver 1</th>
+                <th id="pts-th-d2">Driver 2</th>
+                <th>Winner</th>
+                <th id="pts-th-cumul-d1">D1 Total</th>
+                <th id="pts-th-cumul-d2">D2 Total</th>
+                <th>Gap</th>
+              </tr>
+            </thead>
+            <!-- showing results for points here -->
+            <tbody id="pts-session-tbody"></tbody>
+          </table>
+          <div id="pts-no-data" class="gc-no-data" style="display:none">
+            No session result data found for the selected drivers.
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="footer-copy">Made by shafkat, rajesh and Nubayet.</span>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/standings">Standings</a>
+        <a href="/calendar">Calendar</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="alert"></div>
+  <!-- importing chart.js script -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script> 
+  <script type="module" src="/js/main.js"></script>
+  <script type="module" src="/js/gridCompare.js"></script>
+</body>
+
+</html>

@@ -12,6 +12,7 @@ import resultsRouter from './routes/results.js';
 import meetingsRouter from './routes/meetings.js';
 import latestRaceRouter from './routes/latestRace.js';
 import radioRoutes from './routes/radioRoutes.js';
+import gridCompareRouter from './routes/gridCompare.js'
 
 dotenv.config();
 
@@ -34,6 +35,7 @@ app.use('/api/results', resultsRouter);
 app.use('/api/meetings', meetingsRouter);
 app.use('/api/latestRace', latestRaceRouter);
 app.use('/api/radios', radioRoutes);
+app.use('/api/gridCompare', gridCompareRouter);
 
 // Fallaback
 app.get('/results', (_req, res) =>
@@ -54,6 +56,9 @@ app.get('/', (_req, res) =>
 app.get('/radio', (req, res) => {
     res.sendFile('radio.html', { root: 'main' });
 });
+app.get('/gridCompare', (_req, res) =>
+  res.sendFile(join(__dirname, 'main', 'gridCompare.html'))
+);
 
 // 404 Error handling
 app.use((_req, res) =>
