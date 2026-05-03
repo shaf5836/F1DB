@@ -1,0 +1,69 @@
+/* fantasySignup.css — page-specific styles for the signup form.
+   Loaded AFTER main.css.
+   Note: classes mirror those in fantasyLogin.css so the two auth pages
+   look consistent. Kept separate so each page is self-contained. */
+
+/* Centered narrow card for the auth form. */
+.auth-card {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* Each form field is a label stacked above an input. */
+.auth-field {
+  margin-bottom: 16px;
+}
+/* Slightly more space before the submit button. */
+.auth-field-last {
+  margin-bottom: 20px;
+}
+
+.auth-field label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.875rem;
+  color: var(--text-light);
+}
+
+/* Reusable styled control (input or select) for the auth form. */
+.auth-input {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--bg-card-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: inherit;
+}
+.auth-input:focus {
+  outline: none;
+  border-color: var(--red);
+}
+
+/* Submit button is full-width inside the auth card. */
+.auth-submit {
+  width: 100%;
+}
+
+/* Inline message area below the form (success / error text). */
+.auth-message {
+  margin-top: 16px;
+  font-size: 0.875rem;
+}
+.auth-message.is-success {
+  color: var(--green);
+}
+.auth-message.is-error {
+  color: var(--red);
+}
+
+/* Footer line under the form ("Already have an account?"). */
+.auth-footer-line {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--text-light);
+}
+.auth-footer-line a {
+  color: var(--red);
+}

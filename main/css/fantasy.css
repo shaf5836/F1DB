@@ -1,0 +1,77 @@
+/* fantasy.css — page-specific styles for the Fantasy pick form.
+   Loaded AFTER main.css. Only contains rules that apply to this page. */
+
+/* Each form row: label on top, input below, consistent spacing. */
+.form-row {
+  margin-bottom: 20px;
+}
+.form-row label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.875rem;
+  color: var(--text-light);
+}
+
+/* Reusable form select — replaces the inline styles we had on every <select>. */
+.form-select {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--bg-card-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color var(--transition);
+}
+.form-select:focus {
+  outline: none;
+  border-color: var(--red);
+}
+.form-select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Auth-gate centering helper (replaces inline max-width / margin / text-align). */
+.auth-gate-card {
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: center;
+}
+.auth-gate-card .gate-text {
+  margin: 12px 0 20px;
+}
+.auth-gate-card .gate-actions .btn + .btn {
+  margin-left: 8px;
+}
+
+/* Race info card spacing tweak. */
+.race-card {
+  margin-bottom: 24px;
+}
+.race-card .card-body p {
+  margin: 0;
+}
+
+/* Pick message area below the form (success / error text). */
+.pick-message {
+  margin-top: 16px;
+  font-size: 0.875rem;
+  display: none;
+}
+.pick-message.show {
+  display: block;
+}
+.pick-message.is-success {
+  color: var(--green);
+}
+.pick-message.is-error {
+  color: var(--red);
+}
+
+/* Save / Update button is full-width. */
+.save-btn {
+  width: 100%;
+}
