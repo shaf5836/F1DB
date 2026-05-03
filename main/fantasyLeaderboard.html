@@ -27,7 +27,7 @@
         <li><a href="/results">Results</a></li>
         <li><a href="/calendar">Calendar</a></li>
         <li><a href="/news.html">News</a></li>
-        <li><a href="/radio" >Radio</a></li>
+        <li><a href="/radio">Radio</a></li>
         <li><a href="/gridCompare">Grid Compare</a></li>
         <li class="nav-dropdown">
           <a href="#">Fantasy</a>
@@ -55,6 +55,15 @@
       </section>
 
       <div class="container">
+
+        <!-- Auto-calculate status bar — shows while calculating -->
+        <div id="calcStatus" style="
+          margin-bottom: 16px;
+          font-size: 0.875rem;
+          color: var(--text-light);
+          min-height: 20px;
+        "></div>
+
         <div id="loadingState">
           <div class="skeleton skeleton-row"></div>
           <div class="skeleton skeleton-row"></div>
@@ -63,9 +72,7 @@
 
         <div id="emptyState" class="state-empty" style="display: none">
           <p>No one has scored points yet. Be the first to play!</p>
-          <a href="/fantasy" class="btn btn-primary empty-cta"
-            >Make your pick</a
-          >
+          <a href="/fantasy" class="btn btn-primary empty-cta">Make your pick</a>
         </div>
 
         <div id="leaderboardContent" style="display: none">
@@ -82,12 +89,13 @@
             </table>
           </div>
         </div>
+
       </div>
     </main>
 
     <footer class="footer">
       <div class="container footer-inner">
-        <span class="footer-copy">Made By Shafkat, Rajesh and Nubayet.</span>
+        <span class="footer-copy">Made By shafkat, rajesh and Nubayet.</span>
         <div class="footer-links">
           <a href="/driverStandings">Standings</a>
           <a href="/calendar">Calendar</a>
