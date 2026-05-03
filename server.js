@@ -65,7 +65,8 @@ app.use('/api/shop', shopRoutes);
 // Page fallback routes (existing)
 app.get('/', (_req, res) =>
   res.sendFile(join(__dirname, 'main', 'index.html'))
-// Fallaback
+);
+//Fall Back
 app.get('/results', (_req, res) =>
   res.sendFile(join(__dirname, 'main', 'results.html'))
 );
