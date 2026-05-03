@@ -1,13 +1,11 @@
-// routes/fantasyRoutes.js — fantasy pick, leaderboard, points calculation
+
 import { Router } from "express";
 import db from "../config/db.js";
 import requireAuth from "../middleware/auth.js";
 
 const router = Router();
 
-// ============================================================
-// POST /api/fantasy/pick — submit or update pick for a race
-// ============================================================
+
 router.post("/pick", requireAuth, async (req, res) => {
   try {
     const user_name = req.session.user_name;
@@ -48,12 +46,10 @@ router.post("/pick", requireAuth, async (req, res) => {
       [driver2_id],
     );
     if (d1[0]?.t_team_id === d2[0]?.t_team_id) {
-      return res
-        .status(400)
-        .json({
-          success: false,
-          message: "Drivers must be from different teams",
-        });
+      return res.status(400).json({
+        success: false,
+        message: "Drivers must be from different teams",
+      });
     }
 
     // Check if pick is already locked
@@ -93,9 +89,7 @@ router.post("/pick", requireAuth, async (req, res) => {
   }
 });
 
-// ============================================================
-// GET /api/fantasy/my-pick/:meeting_key — fetch user's pick
-// ============================================================
+
 router.get("/my-pick/:meeting_key", requireAuth, async (req, res) => {
   try {
     const user_name = req.session.user_name;
@@ -135,9 +129,7 @@ router.get("/my-pick/:meeting_key", requireAuth, async (req, res) => {
   }
 });
 
-// ============================================================
-// GET /api/fantasy/next-race — next upcoming meeting
-// ============================================================
+
 router.get("/next-race", async (req, res) => {
   try {
     const [rows] = await db.query(
@@ -149,7 +141,7 @@ router.get("/next-race", async (req, res) => {
     );
 
     if (rows.length === 0) {
-      // Season is over — return the most recent race instead
+    
       const [fallback] = await db.query(
         `SELECT meeting_key, meeting_name, country_name, location, date_start, date_end
                  FROM Meeting
@@ -169,6 +161,7 @@ router.get("/next-race", async (req, res) => {
     res.status(500).json({ success: false, message: err.message });
   }
 });
+
 
 router.get("/options", async (req, res) => {
   try {
@@ -193,9 +186,7 @@ router.get("/options", async (req, res) => {
   }
 });
 
-// ============================================================
-// GET /api/fantasy/leaderboard — top 100 by fantasy_points
-// ============================================================
+
 router.get("/leaderboard", async (req, res) => {
   try {
     const [rows] = await db.query(
@@ -212,11 +203,66 @@ router.get("/leaderboard", async (req, res) => {
   }
 });
 
-// ============================================================
-// POST /api/fantasy/admin/calculate-points/:meeting_key
-// THE BIG ONE — calculates and assigns points for a finished race
-// Captain gets 2x points (so we add their base points one extra time)
-// ============================================================
+
+router.get("/check-results/:meeting_key", async (req, res) => {
+  try {
+    const meeting_key = parseInt(req.params.meeting_key, 10);
+
+    if (isNaN(meeting_key)) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Invalid meeting_key" });
+    }
+
+    // Find the Race session for this meeting
+    const [sessions] = await db.query(
+      `SELECT session_key FROM Session
+             WHERE meeting_key = ? AND session_type = 'Race'
+             LIMIT 1`,
+      [meeting_key],
+    );
+
+    if (sessions.length === 0) {
+      return res.json({
+        success: true,
+        data: { needsCalculation: false },
+      });
+    }
+
+    const session_key = sessions[0].session_key;
+
+    // Count how many results exist for this race session
+    const [results] = await db.query(
+      `SELECT COUNT(*) as total FROM Session_result WHERE session_key = ?`,
+      [session_key],
+    );
+
+    // Count how many picks are still unlocked for this meeting
+    const [unlocked] = await db.query(
+      `SELECT COUNT(*) as total FROM Fantasy_pick
+             WHERE meeting_key = ? AND locked = 0`,
+      [meeting_key],
+    );
+
+    const hasResults = results[0].total > 0;
+    const hasUnlockedPicks = unlocked[0].total > 0;
+
+    res.json({
+      success: true,
+      data: {
+        needsCalculation: hasResults && hasUnlockedPicks,
+        session_key,
+        results_count: results[0].total,
+        unlocked_picks: unlocked[0].total,
+      },
+    });
+  } catch (err) {
+    console.error("Check-results error:", err);
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+
 router.post("/admin/calculate-points/:meeting_key", async (req, res) => {
   try {
     const meeting_key = parseInt(req.params.meeting_key, 10);
@@ -242,7 +288,6 @@ router.post("/admin/calculate-points/:meeting_key", async (req, res) => {
     }
     const session_key = sessions[0].session_key;
 
-    // Get all picks for this meeting
     const [picks] = await db.query(
       `SELECT user_name, driver1_id, driver2_id, team_id, captain_driver_id
              FROM Fantasy_pick

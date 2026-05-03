@@ -8,43 +8,36 @@
     <link rel="stylesheet" href="/css/fantasyLeaderboard.css" />
   </head>
   <body>
-    <!-- Creating Navbar [Shafkat] -->
-  <nav class="navbar">
-    <div class="container navbar-inner">
-      <a href="/" class="nav-logo">
-        <span class="logo-f1">F1</span>HUB
-      </a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="/" >Home</a></li>
-        <!-- Standings Dropdown [Rajesh]-->
-        <li class="nav-dropdown">
-          <a href="#">Standings</a>
-          <ul class="dropdown-menu">
-            <li><a href="/driverStandings">Driver Championship</a></li>
-            <li><a href="/teamStandings">Team Championship</a></li>
-          </ul>
-        </li>
-        <li><a href="/results">Results</a></li>
-        <li><a href="/calendar">Calendar</a></li>
-        <li><a href="/news.html">News</a></li>
-        <li><a href="/radio" >Radio</a></li>
-        <li><a href="/gridCompare">Grid Compare</a></li>
-        <li class="nav-dropdown">
-          <a href="#">Fantasy</a>
-          <ul class="dropdown-menu">
-            <li><a href="/fantasy">Make a Pick</a></li>
-            <li><a href="/leaderboard" class="active">Leaderboard</a></li>
-          </ul>
-        </li>
-        <li><a href="/shop">Shop</a></li>
-        <li><a href="/login" id="navLogin">Login</a></li>
-        <li><a href="/signup" id="navSignup">Sign Up</a></li>
-      </ul>
-      <button class="menu" id="menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
+    <nav class="navbar">
+      <div class="container navbar-inner">
+        <a href="/" class="nav-logo"> <span class="logo-f1">F1</span>HUB </a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="/">Home</a></li>
+          <li class="nav-dropdown">
+            <a href="#">Standings</a>
+            <ul class="dropdown-menu">
+              <li><a href="/driverStandings">Driver Championship</a></li>
+              <li><a href="/teamStandings">Team Championship</a></li>
+            </ul>
+          </li>
+          <li><a href="/calendar">Calendar</a></li>
+          <li><a href="/radio">Radio</a></li>
+          <li class="nav-dropdown">
+            <a href="#">Fantasy</a>
+            <ul class="dropdown-menu">
+              <li><a href="/fantasy">Make a Pick</a></li>
+              <li><a href="/leaderboard" class="active">Leaderboard</a></li>
+            </ul>
+          </li>
+          <li><a href="/shop">Shop</a></li>
+          <li><a href="/login" id="navLogin">Login</a></li>
+          <li><a href="/signup" id="navSignup">Sign Up</a></li>
+        </ul>
+        <button class="menu" id="menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
 
     <main>
       <section class="page-hero">
@@ -55,6 +48,15 @@
       </section>
 
       <div class="container">
+
+        <!-- Auto-calculate status bar — shows while calculating -->
+        <div id="calcStatus" style="
+          margin-bottom: 16px;
+          font-size: 0.875rem;
+          color: var(--text-light);
+          min-height: 20px;
+        "></div>
+
         <div id="loadingState">
           <div class="skeleton skeleton-row"></div>
           <div class="skeleton skeleton-row"></div>
@@ -63,9 +65,7 @@
 
         <div id="emptyState" class="state-empty" style="display: none">
           <p>No one has scored points yet. Be the first to play!</p>
-          <a href="/fantasy" class="btn btn-primary empty-cta"
-            >Make your pick</a
-          >
+          <a href="/fantasy" class="btn btn-primary empty-cta">Make your pick</a>
         </div>
 
         <div id="leaderboardContent" style="display: none">
@@ -82,12 +82,13 @@
             </table>
           </div>
         </div>
+
       </div>
     </main>
 
     <footer class="footer">
       <div class="container footer-inner">
-        <span class="footer-copy">Made By Shafkat, Rajesh and Nubayet.</span>
+        <span class="footer-copy">Made By shafkat, rajesh and Nubayet.</span>
         <div class="footer-links">
           <a href="/driverStandings">Standings</a>
           <a href="/calendar">Calendar</a>
