@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 Hub Admin</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container navbar-inner">
+            <a href="/" class="nav-logo">
+                <span class="logo-f1">F1</span>HUB
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/">Home</a></li>
+                <li><a href="/news.html">News</a></li>
+                <li><a href="/admin" class="active">Admin</a></li>
+            </ul>
+            <button class="menu" id="menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <h1>Admin <span class="accent">Dashboard</span></h1>
+                <p>Manage news and notify subscribers</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="admin-actions">
+                <button class="btn btn-primary" id="togglePostForm">
+                    + Post News
+                </button>
+            </div>
+
+            <!-- Post news form (it is hidden by default) -->
+            <div class="card" id="postNewsCard" style="display:none; margin-top: 24px;">
+                <div class="card-header">
+                    <span class="section-title">Post New Article</span>
+                </div>
+                <div class="card-body">
+
+                    <!-- Title -->
+                    <div class="form-field">
+                        <input type="text" id="newsTitle" placeholder="Article title">
+                    </div>
+
+                    <!-- Date -->
+                    <div class="form-field">
+                        <input type="text" id="newsDate" placeholder="Date (YYYY-MM-DD)" maxlength="10">
+                    </div>
+
+                    <!-- Image URL -->
+                    <div class="form-field">
+                        <input type="text" id="newsImage" placeholder="Image URL (optional)">
+                    </div>
+
+                    <!-- Content -->
+                    <div class="form-field">
+                        <textarea id="newsContent" placeholder="Write the full article content here..." rows="8"></textarea>
+                    </div>
+
+                    <!-- Post and Cancel Buttons -->
+                    <div class="form-buttons">
+                        <button class="btn btn-primary" id="postNewsBtn">Post & Notify Subscribers</button>
+                        <button class="btn btn-ghost" id="cancelPostBtn">Cancel</button>
+                    </div>
+
+                    <!-- Status message -->
+                    <div id="postMessage" style="display:none;"></div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <span class="footer-copy">Made By Shafkat, Rajesh and Nubayet.</span>
+            <div class="footer-links">
+                <a href="/">Home</a>
+                <a href="/news.html">News</a>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="/js/main.js"></script>
+    <script type="module" src="/js/admin.js"></script>
+</body>
+
+</html>

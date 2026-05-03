@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Results</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/results.css">
+</head>
+
+<body>
+    <!-- Navbar (reuse from index.html) -->
+    <nav class="navbar">
+        <div class="container navbar-inner">
+            <a href="/" class="nav-logo">
+                <span class="logo-f1">F1</span>HUB
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/">Home</a></li>
+                <li class="nav-dropdown">
+                    <a href="#">Standings</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/driverStandings.html" class="active">Driver Championship</a></li>
+                        <li><a href="/teamStandings.html">Team Championship</a></li>
+                    </ul>
+                </li>
+                <li><a href="/calendar">Calendar</a></li>
+                <li><a href="/results" class="active">Results</a></li>
+                <li><a href="/radio">Radio</a></li>
+            </ul>
+            <button class="menu" id="menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <section id="section-results" class="page-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title">Race Results</h2>
+                    <span class="section-badge">All 2024 Races</span>
+                </div>
+
+                <!-- Race selector tabs -->
+                <div class="race-tabs" id="raceTabs">
+                    <!-- tabs injected here using JS dom [Shafkat]-->
+                </div>
+
+                <!-- Results table for selected race injected using JS dom [shafkat ]-->
+                <div id="resultsContent">
+                    <div class="skeleton-block" style="height:400px;"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <span class="footer-copy">Made By Shafkat, Rajesh and Nubayet.</span>
+            <div class="footer-links">
+                <a href="/">Home</a>
+                <a href="/standings">Standings</a>
+                <a href="/calendar">Calendar</a>
+            </div>
+        </div>
+    </footer>
+    <!-- Driver Standings JS File -->
+    <script type="module" src="/js/main.js"></script>
+    <script type="module" src="/js/results.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>F1 News</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/news.css">
+</head>
+
+<body>
+    <!-- Navbar (reuse from index.html) -->
+    <nav class="navbar">
+        <div class="container navbar-inner">
+            <a href="/" class="nav-logo">
+                <span class="logo-f1">F1</span>HUB
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/">Home</a></li>
+                <li class="nav-dropdown">
+                    <a href="#">Standings</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/driverStandings.html">Driver Championship</a></li>
+                        <li><a href="/teamStandings.html">Team Championship</a></li>
+                    </ul>
+                </li>
+                <li><a href="/calendar">Calendar</a></li>
+                <li><a href="/news.html" class="active">News</a></li>
+            </ul>
+            <button class="menu" id="menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="page-hero">
+            <div class="container hero-content">
+                <h1>F1 <span class="accent">Latest News</span></h1>
+                <button class="btn-subscribe" onclick="location.href='/newsSub.html'">Subscribe</button>
+            </div>
+        </section>
+        <div class="container">
+            <div class="news-list" id="newsList">
+                <!-- News articles will be injected here -->
+            </div>
+            <div id="news_file_error" class="state-error" style="display:none;"></div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <span class="footer-copy">Made By Shafkat, Rajesh and Nubayet.</span>
+            <div class="footer-links">
+                <a href="/">Home</a>
+                <a href="/standings">Standings</a>
+                <a href="/calendar">Calendar</a>
+                <a href="/news.html">News</a>
+            </div>
+        </div>
+    </footer>
+    <script type="module" src="/js/main.js"></script>
+    <script type="module" src="/js/news.js"></script>
+</body>
+
+</html>

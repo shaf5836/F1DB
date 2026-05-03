@@ -1,0 +1,34 @@
+CREATE TABLE news(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    date DATE NOT NULL,
+    content TEXT NOT NULL,
+    image_url VARCHAR(512)
+)
+
+INSERT INTO news (id, title, date, content, image_url) 
+VALUES (
+    1, 
+    '\'Stupid to stand in his way\' – Verstappen reacts to Lambiase\'s McLaren move', 
+    '2026-05-01', 
+    'Lambiase – known by many as GP – has worked alongside Verstappen since the Dutchman was promoted to Red Bull from the then-named Toro Rosso outfit in 2016, with the pair enjoying great success together over the last decade.\n\nMore recently, Lambiase took on the role of Head of Racing at Red Bull while continuing to race engineer Verstappen, before it was announced earlier this month he would be joining McLaren for 2028 as the Woking-based team\'s Chief Racing Officer.\n\nAhead of this weekend\'s Miami Grand Prix, Verstappen was asked for his thoughts on the news and the prospect of breaking up one of F1\'s most successful partnerships.\n\n"We had a good chat about that and it would be stupid from my side to try and hold him back when you get an opportunity like that," said Verstappen on Thursday\'s media day in Miami.\n\n"I was very happy for him. We are still working together this year, next year. Times change in your career and that was a really good opportunity for him so I\'m happy for him and as a team, we keep pushing together, keep looking forward. In the interests of the team for the future we are trying to find the best people to replace him."\n\nDuring their time working together, Verstappen has amassed four Drivers\' Championship titles and currently 71 F1 victories, with their partnership also helping Red Bull to the Teams\' title twice.\n\nVerstappen stated that it would be difficult to replace Lambiase, with the pair having a unique relationship among drivers and race engineers.\n\n"The general understanding that we have with each other and the chemistry works really well," added Verstappen.\n\n"That\'s very rare I think in racing. You don\'t see that often, a driver and engineer that gel that well together. That\'s of course something I\'ll have to try and find again. It\'s not that easy but sometimes that happens."', 
+    'https://media.formula1.com/image/upload/t_16by9Centre/c_lfill,w_3392/q_auto/v1740000001/fom-website/2026/Miami/GettyImages-2273916357.webp'
+);
+
+INSERT INTO news (id, title, date, content, image_url) 
+VALUES (
+    2, 
+    'Antonelli expects Mercedes to face more competition in Miami as he opens up on plan to fix \'fundamental\' start issue', 
+    '2026-04-30', 
+    'Antonelli arrives in Florida at the top of the Drivers’ Championship standings on 72 points, nine clear of team mate George Russell – the latter winning the first round of the campaign in Australia, and the former triumphing in China and Japan.\n\nOffering his thoughts before F1 cars hit the track again, Antonelli said: “It’s very exciting to be back in a place where I got my first Sprint pole last year. Of course, it’s going to be different this year, different cars, so we’ll see how that goes.\n\n“It’s going to be a very interesting weekend for us. Let’s see how we do. For sure, they’re [our rivals] going to get closer, and we might have to fight quite a bit more this weekend, but we’ll do our best and we’re going to keep our heads down.\n\n“On my side, I’m going to try to maximise the performance in the car, I’m going to do my best, and we’ll see what the result will be.”\n\nWhile Antonelli currently leads the way in terms of points, one area he has been tasked with improving by team boss Toto Wolff moving forward is his race starts, having lost a handful of places on the opening lap over the first three Grands Prix.\n\nAsked if he has been able to work on improvements during the break, and whether the situation will be any better in Miami, Antonelli pointed to a “fundamental” problem that could take more time to fully resolve.\n\n“We’ve been doing some practice starts, of course, in the break,” he commented. “I’ve been working with the team to try and recognise the issue and we seem to have found it. Now we’re trying to think about a solution as soon as possible.\n\n“We know what to work on for the solution. It’s not going to be that straightforward, because it’s a decent change on the clutch paddle, a little on the hand positioning as well. We’re doing our best to find that solution as soon as possible in order to do decent starts.\n\n“Definitely we recognise that my issue was much more fundamental. We’ll see in Miami if we can do a step forward, and then we have another break after Miami, so more time to work on it and to find that solution.”', 
+    'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000001/fom-website/2026/Miami/16x9%20single%20image%20-%202026-04-30T203207.443.webp'
+);
+
+INSERT INTO news (id, title, date, content, image_url) 
+VALUES (
+    3, 
+    '‘I’m open to everything’ – Alonso gives update regarding F1 future beyond 2026', 
+    '2026-04-29', 
+    'Ahead of this weekend\'s Miami Grand Prix, the two-time World Champion spoke about the possibility of leaving the sport but admitted that no decision would be made prior to the summer break at the end of July.\n\n"I\'m not sure," said Alonso on Thursday\'s media day in Miami when asked if he would leave F1 when his current contract expires at the end of this season.\n\n"I\'m open to everything. I think until probably after the summer break I will not really sit down with the team and make the decision. We need to see also how the car improves and how we see things into next year. I\'m very relaxed.\n\n"I will continue racing, if it\'s not F1 I will do Dakar [Rally]. I said many times it\'s a challenge that I want to take, winning endurance racing, F1 and rally. That will probably be unprecedented for any racing driver in the past, so it\'s something that is very appealing.\n\n"I want to race, and he sees me racing, but until he\'s aware of things, maybe it\'s a couple of years, and I don\'t want to race four or five years.\n\n"I will like not to stop before he\'s in the paddock or sits in my car, these kind of things. Moments that you will remember all your life. It does change to be a father."\n\nThe 2026 season has been difficult for Alonso and Aston Martin so far, with the car suffering from reliability issues that means the Spaniard has only finished in one of the three Grands Prix so far this season ahead of Miami this weekend.\n\nHe added: "We have a tough start to the season but we are all embracing this challenge. We are together on this, Aston Martin and Honda. Hopefully we can see some results and start having fun on the weekends."', 
+    'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000001/trackside-images/2026/F1_Grand_Prix_Of_Japan___Qualifying/2268733524.webp'
+);

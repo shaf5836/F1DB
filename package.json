@@ -15,7 +15,8 @@
     "dotenv": "^16.6.1",
     "express": "^4.22.1",
     "express-session": "^1.19.0",
-    "mysql2": "^3.22.3"
+    "mysql2": "^3.22.3",
+    "nodemailer": "^8.0.7"
   },
   "repository": {
     "type": "git",

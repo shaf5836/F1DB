@@ -8,7 +8,13 @@ import { fileURLToPath } from 'url';
 
 import calendarRouter from './routes/calendar.js';
 import driverStandingsRouter from './routes/driverStandings.js';
-import teamStandingsRouter from './routes/teamStandings.js'
+import news from './routes/news.js'
+import otpRouter from './routes/otp.js'
+import adminRouter from './routes/admin.js';
+import teamStandingsRouter from './routes/teamStandings.js';
+import resultsRouter from './routes/results.js';
+import meetingsRouter from './routes/meetings.js';
+import latestRaceRouter from './routes/latestRace.js';
 import radioRoutes from './routes/radioRoutes.js';
 import authRoutes from './routes/authRoutes.js'; 
 import fantasyRoutes from './routes/fantasyRoutes.js'; 
@@ -45,6 +51,12 @@ app.use(express.static(join(__dirname, 'main')));
 app.use('/api/calendar', calendarRouter);
 app.use('/api/driverStandings', driverStandingsRouter);
 app.use('/api/teamStandings', teamStandingsRouter);
+app.use('/api/news', news);
+app.use('/api/otp', otpRouter);
+app.use('/api/admin', adminRouter); 
+app.use('/api/results', resultsRouter);
+app.use('/api/meetings', meetingsRouter);
+app.use('/api/latestRace', latestRaceRouter);
 app.use('/api/radios', radioRoutes);
 app.use('/api/auth', authRoutes);          
 app.use('/api/fantasy', fantasyRoutes);
@@ -53,6 +65,9 @@ app.use('/api/shop', shopRoutes);
 // Page fallback routes (existing)
 app.get('/', (_req, res) =>
   res.sendFile(join(__dirname, 'main', 'index.html'))
+// Fallaback
+app.get('/results', (_req, res) =>
+  res.sendFile(join(__dirname, 'main', 'results.html'))
 );
 app.get('/calendar', (_req, res) =>
   res.sendFile(join(__dirname, 'main', 'calendar.html'))
