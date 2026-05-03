@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>F1 News Subscription</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/newsSub.css">
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a href="/" class="nav-logo">
+        <span class="logo-f1">F1</span>HUB
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/">Home</a></li>
+        <li class="nav-dropdown">
+          <a href="#">Standings</a>
+          <ul class="dropdown-menu">
+            <li><a href="/driverStandings.html">Driver Championship</a></li>
+            <li><a href="/teamStandings.html">Team Championship</a></li>
+          </ul>
+        </li>
+        <li><a href="/calendar">Calendar</a></li>
+        <li><a href="/news.html">News</a></li>
+      </ul>
+      <button class="menu" id="menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>Subscribe to <span class="accent">F1 News</span></h1>
+        <p>Get the latest Formula 1 updates delivered straight to your inbox.</p>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="card">
+        <div class="card-header">
+          <span class="section-title">Email Verification</span>
+        </div>
+        <div class="card-body">
+
+          <!-- Email -->
+          <div class="form-group">
+            <input type="email" id="email" placeholder="Enter your email address">
+            <button id="sendOtp" class="btn btn-primary">Send OTP</button>
+          </div>
+
+          <!-- OTP (hidden until OTP is sent) -->
+          <div class="form-group" id="otpBox" style="display:none;">
+            <input type="text" id="otp" placeholder="Enter 6-digit OTP" maxlength="6">
+            <button id="verifyOtp" class="btn btn-primary">Verify</button>
+          </div>
+
+          <!-- Status message -->
+          <div id="subMessage" style="display:none;"></div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="footer-copy">Made By Shafkat, Rajesh, and Nubayet.</span>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/standings">Standings</a>
+        <a href="/calendar">Calendar</a>
+        <a href="/news.html">News</a>
+      </div>
+    </div>
+  </footer>
+  <script type="module" src="/js/main.js"></script>
+  <script type="module" src="/js/newSub.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+/* fantasyLeaderboard.css — page-specific styles for the leaderboard.
+   Loaded AFTER main.css. */
+
+/* Skeleton placeholder rows shown while the leaderboard is loading. */
+.skeleton-row {
+  height: 60px;
+  margin-bottom: 8px;
+  background: var(--bg-card-2);
+  border-radius: var(--radius);
+}
+.skeleton-row:last-child {
+  margin-bottom: 0;
+}
+
+/* Spacing for the call-to-action button inside the empty state. */
+.empty-cta {
+  margin-top: 16px;
+}

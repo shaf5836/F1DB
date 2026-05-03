@@ -1,0 +1,123 @@
+.news-list {
+    margin-top: 2em;
+}
+
+.news-card {
+    cursor: pointer;
+    border: 1px solid #222;
+    border-radius: 10px;
+    margin-bottom: 1.5em;
+    padding: 1.5em;
+    display: flex;
+    align-items: flex-start;
+    gap: 2em;
+    background: #111;
+    transition: box-shadow 0.2s, border 0.2s;
+    color: #f1f1f1;
+}
+.news-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    border: 1px solid #e10600;
+}
+
+.news-thumb {
+    width: 260px;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+    background: #222;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.news-title {
+    margin: 0 0 0.5em 0;
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #fff;
+}
+
+.news-date {
+    color: #e10600;
+    font-size: 1em;
+    margin-bottom: 0.7em;
+}
+
+.news-preview {
+    color: #ccc;
+    font-size: 1.08em;
+    margin-bottom: 0.7em;
+    line-height: 1.6;
+    max-height: 3.5em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre-line;
+    font-weight: normal;
+}
+
+.news-content {
+    display: none;
+    margin-top: 0.7em;
+    color: #ccc;
+    font-size: 1em;
+    line-height: 1.7;
+}
+
+@media (max-width: 700px) {
+    .news-card {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1em;
+        gap: 1em;
+    }
+    .news-thumb {
+        width: 100%;
+        height: 180px;
+    }
+}
+
+/* Container to align H1 and Button side-by-side */
+.hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+/* Subscribe Button Styling */
+.btn-subscribe {
+    background-color: #e10600; /* F1 Signature Red */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border-bottom: 3px solid #b00500; /* Darker red for depth */
+}
+
+.btn-subscribe:hover {
+    background-color: #ff1e17;
+    transform: translateY(-2px);
+}
+
+.btn-subscribe:active {
+    transform: translateY(1px);
+    border-bottom: 1px solid #b00500;
+}
+
+/* Responsive adjustment for small screens */
+@media (max-width: 700px) {
+    .hero-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .btn-subscribe {
+        width: 100%;
+    }
+}
