@@ -16,6 +16,7 @@ import resultsRouter from './routes/results.js';
 import meetingsRouter from './routes/meetings.js';
 import latestRaceRouter from './routes/latestRace.js';
 import radioRoutes from './routes/radioRoutes.js';
+import gridCompareRouter from './routes/gridCompare.js'
 import authRoutes from './routes/authRoutes.js'; 
 import fantasyRoutes from './routes/fantasyRoutes.js'; 
 import shopRoutes from './routes/shopRoutes.js';
@@ -58,6 +59,7 @@ app.use('/api/results', resultsRouter);
 app.use('/api/meetings', meetingsRouter);
 app.use('/api/latestRace', latestRaceRouter);
 app.use('/api/radios', radioRoutes);
+app.use('/api/gridCompare', gridCompareRouter);
 app.use('/api/auth', authRoutes);          
 app.use('/api/fantasy', fantasyRoutes);
 app.use('/api/shop', shopRoutes);
@@ -82,6 +84,9 @@ app.get('/teamStandings', (_req, res) =>
 app.get('/radio', (req, res) => {
     res.sendFile('radio.html', { root: 'main' });
 });
+app.get('/gridCompare', (_req, res) =>
+  res.sendFile(join(__dirname, 'main', 'gridCompare.html'))
+);
 
 // New fantasy + auth page fallback routes [Nubayet]
 app.get('/login', (_req, res) =>
