@@ -1,0 +1,26 @@
+INSERT INTO Driver (driver_id, name_acronym, first_name, last_name, country_code, driver_number, dc_year, t_team_id) VALUES
+(1,  'VER', 'Max',       'Verstappen', 'NLD', 1,  2024, 1),
+(2,  'PER', 'Sergio',    'Perez',      'MEX', 11, 2024, 1),
+(3,  'LEC', 'Charles',   'Leclerc',    'MCO', 16, 2024, 2),
+(4,  'SAI', 'Carlos',    'Sainz',      'ESP', 55, 2024, 2),
+(5,  'NOR', 'Lando',     'Norris',     'GBR', 4,  2024, 3),
+(6,  'PIA', 'Oscar',     'Piastri',    'AUS', 81, 2024, 3),
+(7,  'RUS', 'George',    'Russell',    'GBR', 63, 2024, 4),
+(8,  'ALO', 'Fernando',  'Alonso',     'ESP', 14, 2024, 5),
+(9,  'HAM', 'Lewis',     'Hamilton',   'GBR', 44, 2024, 4),
+(10, 'STR', 'Lance',     'Stroll',     'CAN', 18, 2024, 5),
+(11, 'TSU', 'Yuki',      'Tsunoda',    'JPN', 22, 2024, 8),
+(12, 'RIC', 'Daniel',    'Ricciardo',  'AUS', 3,  2024, 8),
+(13, 'HUL', 'Nico',      'Hülkenberg', 'DEU', 27, 2024, 10),
+(14, 'MAG', 'Kevin',     'Magnussen',  'DNK', 20, 2024, 10),
+(15, 'ALB', 'Alexander', 'Albon',      'THA', 23, 2024, 7),
+(16, 'SAR', 'Logan',     'Sargeant',   'USA', 2,  2024, 7),
+(17, 'OCO', 'Esteban',   'Ocon',       'FRA', 31, 2024, 6),
+(18, 'GAS', 'Pierre',    'Gasly',      'FRA', 10, 2024, 6),
+(19, 'BOT', 'Valtteri',  'Bottas',     'FIN', 77, 2024, 9),
+(20, 'ZOU', 'Guanyu',    'Zhou',       'CHN', 24, 2024, 9),
+(21, 'BEA', 'Oliver',    'Bearman',    'GBR', 38, 2024, 2),
+(22, 'COL', 'Franco',    'Colapinto',  'ARG', 43, 2024, 7),
+(23, 'LAW', 'Liam',    'Lawson',  'NZL', 30, 2024, 8);
+(24, 'DOO', 'Jack',   'Doohan',    'AUS', 61, 2024, 6); 
+
